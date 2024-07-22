@@ -1,0 +1,67 @@
+definitions:
+  models.UserInvite:
+    properties:
+      email_id:
+        type: string
+      role:
+        type: string
+    required:
+    - email_id
+    - role
+    type: object
+info:
+  contact:
+    email: support@swagger.io
+    name: API Support
+    url: http://www.swagger.io/support
+  description: Testing Swagger APIs.
+  termsOfService: http://swagger.io/terms/
+  title: UserManagment APIs
+  version: "1.0"
+paths:
+  /inviteuser:
+    post:
+      consumes:
+      - application/json
+      description: Invite an user for an org.
+      parameters:
+      - description: User Invite
+        in: body
+        name: '{object}'
+        required: true
+        schema:
+          $ref: '#/definitions/models.UserInvite'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      security:
+      - Bearer: []
+      summary: Invite an user for an Org.
+      tags:
+      - UserManagement
+  /listmembers:
+    get:
+      consumes:
+      - application/json
+      description: List Members for an org.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      security:
+      - Bearer: []
+      summary: List Members for an Org.
+      tags:
+      - UserManagement
+schemes:
+- http
+- https
+securityDefinitions:
+  Bearer:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"
