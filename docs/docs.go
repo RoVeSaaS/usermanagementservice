@@ -20,6 +20,40 @@ const docTemplate = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
+        "/getuserinfo": {
+            "get": {
+                "description": "User Info Endpoint for the service.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "LoginFlow"
+                ],
+                "summary": "UserInfo Endpoint.",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/health": {
+            "get": {
+                "description": "Health Check Endpoint for the service.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "HealthCheck"
+                ],
+                "summary": "Health Check Endpoint for the service.",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
         "/inviteuser": {
             "post": {
                 "security": [
@@ -74,6 +108,23 @@ const docTemplate = `{
                     "UserManagement"
                 ],
                 "summary": "List Members for an Org.",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/login": {
+            "get": {
+                "description": "Login Endpoint for the service.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "LoginFlow"
+                ],
+                "summary": "Login Endpoint.",
                 "responses": {
                     "200": {
                         "description": "OK"

@@ -19,6 +19,28 @@ info:
   title: UserManagment APIs
   version: "1.0"
 paths:
+  /getuserinfo:
+    get:
+      description: User Info Endpoint for the service.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      summary: UserInfo Endpoint.
+      tags:
+      - LoginFlow
+  /health:
+    get:
+      description: Health Check Endpoint for the service.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      summary: Health Check Endpoint for the service.
+      tags:
+      - HealthCheck
   /inviteuser:
     post:
       consumes:
@@ -56,6 +78,17 @@ paths:
       summary: List Members for an Org.
       tags:
       - UserManagement
+  /login:
+    get:
+      description: Login Endpoint for the service.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      summary: Login Endpoint.
+      tags:
+      - LoginFlow
 schemes:
 - http
 - https

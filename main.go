@@ -10,7 +10,6 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/honeycombio/otel-config-go/otelconfig"
 	"github.com/joho/godotenv"
-
 	swaggerfiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
 )
@@ -43,7 +42,9 @@ func main() {
 	// 	log.Fatal("Error loading .env file")
 	// }
 	fmt.Println(err)
-	otelShutdown, err := otelconfig.ConfigureOpenTelemetry()
+	otelShutdown, err := otelconfig.ConfigureOpenTelemetry(
+		otelconfig.WithMetricsEnabled(false),
+	)
 	if err != nil {
 		log.Fatalf("error setting up OTel SDK - %e", err)
 	}
@@ -52,6 +53,8 @@ func main() {
 
 	// Load the routes
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerfiles.Handler))
+	routes.PublicRoutes(r)
+	routes.LoginRoutes(r)
 	routes.CustomerRoutes(r)
 	// Run the server
 	r.Run(":8000")

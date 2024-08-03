@@ -15,3 +15,7 @@ func CustomerRoutes(r *gin.Engine) {
 	r.GET("/listmembers", controllers.ListMembership)
 	r.POST("/inviteuser", controllers.InviteUser)
 }
+
+func PublicRoutes(r *gin.Engine) {
+	r.GET("/health", controllers.HealthCheck)
+}
